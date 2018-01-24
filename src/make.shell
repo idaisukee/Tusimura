@@ -1,0 +1,8 @@
+cat /home/ieremius/prd/doc/kanji/dat/5.csv | ruby -F',' -ane '
+print [$F[1],$F[2].strip].join(" & ") + " \\\\\n"
+' > /tmp/body
+
+cat /home/ieremius/prd/doc/kanji/doc/head.tex /tmp/body /home/ieremius/prd/doc/kanji/doc/foot.tex > /tmp/full.tex
+cd /tmp
+uplatex full
+dvipdfmx full
