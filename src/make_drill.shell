@@ -1,7 +1,8 @@
 dir=Tusimura
 cat /home/ieremius/prd/doc/"$dir"/dat/5.csv | ruby -F',' -ane '
 print $F[3].strip + "\n\n"
-print "\\hspace{8em} " + $F[4].strip + "\n\n"
+print "\\hspace{8em} " + "{\\Huge " + $F[4].strip + "}" + "\n\n"
+print "\\vspace{1em}" + "\n\n"
 ' > /tmp/drill_body
 
 name=drill_full
