@@ -1,0 +1,11 @@
+dir=Tusimura
+cat /home/ieremius/prd/doc/"$dir"/dat/5.csv | ruby -F',' -ane '
+print $F[3].strip + "\n\n"
+print "\\vspace{1em}" + "\n\n"
+' > /tmp/quiz_body
+
+name=quiz_full
+cat /home/ieremius/prd/doc/"$dir"/doc/head1.tex /tmp/quiz_body /home/ieremius/prd/doc/"$dir"/doc/foot1.tex > /tmp/"$name".tex
+cd /tmp
+uplatex $name
+dvipdfmx $name
