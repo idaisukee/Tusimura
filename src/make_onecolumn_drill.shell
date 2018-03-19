@@ -1,0 +1,13 @@
+dir=Tusimura
+cat /home/ieremius/prd/doc/"$dir"/dat/5.csv | ruby -F',' -ane '
+print $F[3].strip + "\n\n"
+print "\\hspace{25em} " + "{\\Huge " + $F[4].strip + "}" + "\n\n"
+print "\\vspace{1em}" + "\n\n"
+' > /tmp/drill_body
+
+name=onecolumn_drill_full
+cat /home/ieremius/prd/doc/"$dir"/doc/head3.tex /tmp/drill_body /home/ieremius/prd/doc/"$dir"/doc/foot1.tex > /tmp/"$name".tex
+cd /tmp
+uplatex $name
+dvipdfmx $name
+firefox file:///tmp/"$name".pdf
